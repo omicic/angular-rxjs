@@ -1,14 +1,18 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const app = express();
+import * as express from 'express';
+//var getAllCourses= require("./get-courses.route");
+
+import {Application} from "express";
+import {getAllCourses} from "./get-courses.route";
+var bodyParser = require('body-parser');
+const app: Application = express();
+
 app.use(bodyParser.json());
 
+app.route('/api/courses').get(getAllCourses);
 
- const server = app.listen(8081,  () => {
-    var host = server.address().address
-    var port = server.address().port 
-    console.log("Example app listening at http://%s:%s", host, port)
- })
+const httpServer = app.listen(9000, () => {
+    console.log("HTTP REST API Server running at http://localhost:" + httpServer.address().port);
+});
 
 
 

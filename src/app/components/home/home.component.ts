@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Course } from '../../models/course';
+import { StoreService } from '../../services/store.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  beginnercourses$: Observable<Course[]>;
+  advancedcourses$: Observable<Course[]>;
+
+  constructor(private storeservice: StoreService) { }
 
   ngOnInit() {
+    const courses$ = this.storeservice.courses$;
+
+    this.beginnercourses$ = this.storeservice.selectBeginnerCourses();
+    this.advancedcourses$ = this.storeservice.selectAdvancedCourses();
+
   }
 
 }
