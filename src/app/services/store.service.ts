@@ -11,8 +11,9 @@ import {createHttpObservable} from './util';
 })
 export class StoreService {
 
+
   private subject = new BehaviorSubject<Course[]>([]);
-  courses$: Observable<Course[]> = this.subject.asObservable();;
+  courses$: Observable<Course[]> = this.subject.asObservable();
 
   init(){
     const http$ = createHttpObservable('/api/courses');
@@ -34,53 +35,19 @@ export class StoreService {
     return this.filterByCategory('ADVANCED');
   }
 
+  selectCourseById(courseId: number) {
+    return this.courses$
+      .pipe(
+        map(courses => courses.find(course => course.id == courseId)),
+        filter(course => !!course)
+      );
+  }
+
   filterByCategory(category: string) {
     return this.courses$
       .pipe(
         map(courses => courses
           .filter(course => course.category == category))
-      );
-    
+      );   
   }
-
-
-
-
-
-
-
-  /************* 
-
-  createHttpObservable(url: string){
-    return Observable.create(observer => {
-
-      const controller = new AbortController();
-      const signal = controller.signal;
-
-      fetch(url, {signal})
-        .then(response =>{
-            if(response.ok){
-              return response.json();
-            } else {
-              observer.error('Request faild with status code: ' + response.status);
-            }
-        })
-        .then(body => {
-          observer.next(body);
-          observer.complete();
-        })
-        .catch(err => {
-          observer.error(err);
-        });
-
-        return () => controller.abort()
-
-    });
-
-  }*/
-
-
-
-
-
 }

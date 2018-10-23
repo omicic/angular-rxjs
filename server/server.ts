@@ -2,13 +2,16 @@ import * as express from 'express';
 //var getAllCourses= require("./get-courses.route");
 
 import {Application} from "express";
-import {getAllCourses} from "./get-courses.route";
+import {getAllCourses, getCourseById} from "./get-courses.route";
+import {searchLessons} from "./search-lessons.route";
 var bodyParser = require('body-parser');
 const app: Application = express();
 
 app.use(bodyParser.json());
 
 app.route('/api/courses').get(getAllCourses);
+app.route('/api/courses/:id').get(getCourseById);
+app.route('/api/lessons').get(searchLessons);
 
 const httpServer = app.listen(9000, () => {
     console.log("HTTP REST API Server running at http://localhost:" + httpServer.address().port);
