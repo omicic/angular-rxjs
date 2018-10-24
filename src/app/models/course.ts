@@ -1,9 +1,9 @@
 export class Course {
     id: number;
-    desc: string;
+    description: string;
     iconUrl: string;
     courseListIcon: string;
-    longDesc: string;
+    longDescription: string;
     category: string;
     lessonsCount: number;
 }

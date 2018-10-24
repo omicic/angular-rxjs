@@ -33,7 +33,7 @@ export const COURSES: any = {
     3: {
         id: 3,
         description: 'Angular PWA - Progressive Web Apps Course',
-        longDescription: "<p class='course-description'>Learn Angular Progressive Web Applications, build the future of the Web Today.",
+        longDescription: "Learn Angular Progressive Web Applications, build the future of the Web Today.",
         iconUrl: 'https://s3-us-west-1.amazonaws.com/angular-university/course-images/angular-pwa-course.png',
         courseListIcon: 'https://s3-us-west-1.amazonaws.com/angular-university/course-images/alien.png',
         category: 'ADVANCED',

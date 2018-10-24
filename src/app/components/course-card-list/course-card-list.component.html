@@ -8,14 +8,14 @@
   
     <mat-card-content>
       <p>
-        {{course.longDesc}}
+        {{course.longDescription}}
       </p>
     </mat-card-content>
 
     <mat-card-actions class="card-action">
      
         <button mat-raised-button color="primary" [routerLink]="['/courses',course.id]">View</button>
-        <button mat-raised-button color="accent"  >Edit</button>
+        <button mat-raised-button color="accent"  (click)="editCourse(course)">Edit</button>
 
     </mat-card-actions>
   </mat-card>

@@ -3,17 +3,18 @@ import { NgModule } from '@angular/core';
 import 'hammerjs';
 
 import {HttpClientModule} from "@angular/common/http";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
-import {MatSidenavModule, MatInputModule, MatFormFieldModule, MatTabsModule, MatButtonModule, MatCardModule, MatIconModule, MatListModule, MatToolbarModule} from '@angular/material';
+import {MatSidenavModule, MatSelectModule, MatDialogModule, MatInputModule, MatFormFieldModule, MatTabsModule, MatButtonModule, MatCardModule, MatIconModule, MatListModule, MatToolbarModule, MatDatepickerModule} from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { CourseComponent } from './components/course/course.component';
 import { CourseCardListComponent } from './components/course-card-list/course-card-list.component';
 import { CourseDialogComponent } from './components/course-dialog/course-dialog.component';
-
+import {MatMomentDateModule} from "@angular/material-moment-adapter";
 
 @NgModule({
   declarations: [
@@ -27,9 +28,11 @@ import { CourseDialogComponent } from './components/course-dialog/course-dialog.
   imports: [
     HttpClientModule,
     BrowserModule,
+    MatDialogModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatCardModule,
+    MatDatepickerModule,
     MatSidenavModule,
     MatIconModule,
     MatTabsModule,
@@ -37,10 +40,14 @@ import { CourseDialogComponent } from './components/course-dialog/course-dialog.
     MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatMomentDateModule
      
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CourseDialogComponent]
 })
 export class AppModule { }
